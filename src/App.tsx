@@ -1,12 +1,17 @@
-import { activo } from './lib/groups';
 import { caja } from './lib/accounts';
+import { Item } from './models/item';
 
 const App = () => {
+  const cajaBCSS = new Item({
+    account: caja,
+    debtorSum: 2000,
+    creditorSum: 1000
+  });
   return (
     <div>
-      <h1>{activo.name}</h1>
-      <p>{activo.headings[0].accounts[0].balance}</p>
-      <p>{caja.balance}</p>
+      <p>{cajaBCSS.account.name}</p>
+      <p>{cajaBCSS.account.balance}</p>
+      <p>{cajaBCSS.balance}</p>
     </div>
   );
 };
