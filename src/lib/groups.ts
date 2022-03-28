@@ -1,8 +1,27 @@
 import Group from '../models/group';
 
-import { cajaYBanco } from './headings';
+// Headings
+import { HeadingsActivo, HeadingsPasivo, HeadingsPatrimonioNeto } from './headings';
 
-export const activo = new Group({
+const activo = new Group({
   name: 'Activo',
-  headings: [cajaYBanco],
+  headings: HeadingsActivo
 });
+
+const pasivo = new Group({
+  name: 'Pasivo',
+  headings: HeadingsPasivo
+});
+
+const patrimonioNeto = new Group({
+  name: 'Patrimonio Neto',
+  headings: HeadingsPatrimonioNeto
+});
+
+const Groups = [
+  activo,
+  pasivo,
+  patrimonioNeto
+];
+
+export default Groups;

@@ -1,18 +1,30 @@
-import { caja } from './lib/accounts';
-import { Item } from './models/item';
+import { useEffect, useState } from 'react';
+
+// import { Item } from './models/item';
+
+// Library
+import Groups from './lib/groups';
+// import Headings from './lib/headings';
+
+// Components
+import AddItems, { showAddItems, hideAddItems } from './components/AddItems/AddItems';
 
 const App = () => {
-  const cajaBCSS = new Item({
-    account: caja,
-    debtorSum: 2000,
-    creditorSum: 1000
-  });
+  // const [items, setItems] = useState<Item[] | null>(null);
+
+  const [addItemsDisplay, setAddItemsDisplay] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (addItemsDisplay) {
+      showAddItems();
+    } else hideAddItems();
+  }, [addItemsDisplay]);
+
   return (
-    <div>
-      <p>{cajaBCSS.account.name}</p>
-      <p>{cajaBCSS.account.balance}</p>
-      <p>{cajaBCSS.balance}</p>
-    </div>
+    <main style={{margin: '1em'}}>
+      <button onClick={() => setAddItemsDisplay(true)}>Ok</button>
+      <AddItems groups={Groups} setDisplay={setAddItemsDisplay} />
+    </main>
   );
 };
 
