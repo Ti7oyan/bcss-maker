@@ -1,29 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Modal } from '@mantine/core';
 
 // import { Item } from './models/item';
 
-// Library
-import Groups from './lib/groups';
-// import Headings from './lib/headings';
-
 // Components
-import AddItems, { showAddItems, hideAddItems } from './components/AddItems/AddItems';
+import AddItems from './components/AddItems';
 
 const App = () => {
-  // const [items, setItems] = useState<Item[] | null>(null);
-
-  const [addItemsDisplay, setAddItemsDisplay] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (addItemsDisplay) {
-      showAddItems();
-    } else hideAddItems();
-  }, [addItemsDisplay]);
+  const [openedAddItems, setOpenedAddItems] = useState<boolean>(false);
 
   return (
     <main style={{margin: '1em'}}>
-      <button onClick={() => setAddItemsDisplay(true)}>Ok</button>
-      <AddItems groups={Groups} setDisplay={setAddItemsDisplay} />
+      <Modal
+        opened={openedAddItems}
+        withCloseButton={false}
+        onClose={() => setOpenedAddItems(false)}
+        title="Agregá una cuenta"
+        centered
+      >
+        <AddItems />
+      </Modal>
+      <button className='border-2 p-2' onClick={() => setOpenedAddItems(true)}>Agregar cuenta</button>
     </main>
   );
 };
