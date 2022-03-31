@@ -15,7 +15,7 @@ const caja = new Account({
 });
 
 const bancoCuentaCorriente = new Account({
-  name: 'Banco Cuenta Corriente',
+  name: 'Banco cuenta corriente',
   value: 'BANCO_CUENTA_CORRIENTE',
   heading: 'Caja y Banco',
   group: 'activo',
@@ -31,7 +31,7 @@ const valoresADepositar = new Account({
 });
 
 const bancoCajaDeAhorro = new Account({
-  name: 'Banco Caja de Ahorro',
+  name: 'Banco caja de ahorro',
   value: 'BANCO_CAJA_AHORRO',
   heading: 'Caja y Banco',
   group: 'activo',
@@ -41,7 +41,7 @@ const bancoCajaDeAhorro = new Account({
 // Créditos por Ventas
 
 const deudoresPorVenta = new Account({
-  name: 'Deudores por Venta',
+  name: 'Deudores por venta',
   value: 'DEUDORES_POR_VENTA',
   heading: 'Créditos por Ventas',
   group: 'activo',
@@ -57,7 +57,7 @@ const documentosACobrar = new Account({
 });
 
 const tarjetaDeCreditoACobrar = new Account({
-  name: 'Tarjeta de Crédito a cobrar',
+  name: 'Tarjeta de crédito a cobrar',
   value: 'TARJETA_CREDITO_COBRAR',
   heading: 'Créditos por Ventas',
   group: 'activo',
@@ -75,7 +75,7 @@ const deudoresVarios = new Account({
 });
 
 const socioCuentaAporte = new Account({
-  name: 'Socio Cuenta Aporte',
+  name: 'Socio cuenta aporte',
   value: 'SOCIO_CUENTA_APORTE',
   heading: 'Otros Créditos',
   group: 'activo',
@@ -105,7 +105,7 @@ const mercaderias = new Account({
 // Bienes de Uso
 
 const mueblesYUtiles = new Account({
-  name: 'Muebles y Útiles',
+  name: 'Muebles y útiles',
   value: 'MUEBLES_UTILES',
   heading: 'Bienes de Uso',
   group: 'activo',
@@ -113,7 +113,7 @@ const mueblesYUtiles = new Account({
 });
 
 const equipamientoDeComputacion = new Account({
-  name: 'Equipamiento De Computación',
+  name: 'Equipamiento de computación',
   value: 'EQUIPAMIENTO_COMPUTACION',
   heading: 'Bienes de Uso',
   group: 'activo',
@@ -171,7 +171,7 @@ const terrenos = new Account({
 // Bienes Intangibles
 
 const llaveDeNegocio = new Account({
-  name: 'Llave de Negocio',
+  name: 'Llave de negocio',
   value: 'LLAVE_NEGOCIO',
   heading: 'Bienes Intangibles',
   group: 'activo',
@@ -181,7 +181,7 @@ const llaveDeNegocio = new Account({
 // Cargos Diferidos
 
 const gastosDeOrganizacion = new Account({
-  name: 'Gastos de Organización',
+  name: 'Gastos de organización',
   value: 'GASTOS_ORGANIZACION',
   heading: 'Cargos Diferidos',
   group: 'activo',
@@ -203,7 +203,7 @@ const proveedores = new Account({
 });
 
 const acreedoresVarios = new Account({
-  name: 'Acreedores Varios',
+  name: 'Acreedores varios',
   value: 'ACREEDORES_VARIOS',
   heading: 'Deudas Comerciales',
   group: 'pasivo',
@@ -211,7 +211,7 @@ const acreedoresVarios = new Account({
 });
 
 const documentosAPagar = new Account({
-  name: 'Documentos a Pagar',
+  name: 'Documentos a pagar',
   value: 'DOCUMENTOS_PAGAR',
   heading: 'Deudas Comerciales',
   group: 'pasivo',
@@ -241,7 +241,7 @@ const sueldosAPagar = new Account({
 // Otras deudas
 
 const motivoAPagar = new Account({
-  name: 'Motivo a Pagar',
+  name: 'Motivo a pagar',
   value: 'MOTIVO_PAGAR',
   heading: 'Otras Deudas',
   group: 'pasivo',
@@ -253,7 +253,7 @@ const motivoAPagar = new Account({
 // Deudas financieras
 
 const prendasAPagar = new Account({
-  name: 'Prendas a Pagar',
+  name: 'Prendas a pagar',
   value: 'PRENDAS_PAGAR',
   heading: 'Deudas Financieras',
   group: 'pasivo',
@@ -271,7 +271,7 @@ const hipotecasAPagar = new Account({
 // Patrimonio Neto
 
 const capitalSocial = new Account({
-  name: 'Capital Social',
+  name: 'Capital social',
   value: 'CAPITAL_SOCIAL',
   heading: 'Patrimonio Neto',
   group: 'patrimonio neto',
@@ -279,11 +279,237 @@ const capitalSocial = new Account({
 });
 
 const resultadosDelEjercicio = new Account({
-  name: 'Resultados del Ejercicio',
+  name: 'Resultados del ejercicio',
   value: 'RESULTADOS_EJERCICIO',
   heading: 'Patrimonio Neto',
   group: 'patrimonio neto',
   balance: 'acreedor'
+});
+
+// Pérdidas
+
+// Gastos de Administración
+
+const gastosGenerales = new Account({
+  name: 'Gastos generales',
+  value: 'GASTOS_GENERALES',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const serviciosPagados = new Account({
+  name: 'Servicios pagados',
+  value: 'SERVICIOS_PAGADOS',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const gastosDeMantenimiento = new Account({
+  name: 'Gastos de mantenimiento',
+  value: 'GASTOS_MANTENIMIENTO',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const gastosBancarios = new Account({
+  name: 'Gastos bancarios',
+  value: 'GASTOS_BANCARIOS',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const selladoBancario = new Account({
+  name: 'Sellado bancario',
+  value: 'SELLADO_BANCARIO',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const comisionesBancarias = new Account({
+  name: 'Comisiones bancarias',
+  value: 'COMISIONES_BANCARIAS',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const sueldosYJornales = new Account({
+  name: 'Sueldos y jornales',
+  value: 'SUELDOS_JORNALES',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const cargasSociales = new Account({
+  name: 'Cargas sociales',
+  value: 'CARGAS_SOCIALES',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const art = new Account({
+  name: 'A.R.T.',
+  value: 'ART',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const despido = new Account({
+  name: 'Despido',
+  value: 'DESPIDO',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const quebrantoPorDespido = new Account({
+  name: 'Quebranto por despido',
+  value: 'QUEBRANTO_DESPIDO',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const alquileresPagados = new Account({
+  name: 'Alquileres pagados',
+  value: 'ALQUILERES_PAGADOS',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const segurosPagados = new Account({
+  name: 'Seguros pagados',
+  value: 'SEGUROS_PAGADOS',
+  heading: 'Gastos de Administración',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+// Gastos de comercialización
+
+const fletes = new Account({
+  name: 'Fletes',
+  value: 'FLETES',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const impuestosPagados = new Account({
+  name: 'Impuestos pagados',
+  value: 'IMPUESTOS_PAGADOS',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const descuentosPerdidos = new Account({
+  name: 'Descuentos perdidos',
+  value: 'DESCUENTOS_PERDIDOS',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const gastosDePublicidad = new Account({
+  name: 'Gastos de publicidad',
+  value: 'GASTOS_PUBLICIDAD',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const comisionesPagadas = new Account({
+  name: 'Comisiones pagadas',
+  value: 'COMISIONES_PAGADAS',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const cuotaAutonoma = new Account({
+  name: 'Cuota autónoma',
+  value: 'CUOTA_AUTONOMA',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const cuotaMonotributo = new Account({
+  name: 'Cuota monotributo',
+  value: 'CUOTA_MONOTRIBUTO',
+  heading: 'Gastos de Comercialización',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+// Gastos de financiación
+
+const interesesPagados = new Account({
+  name: 'Intereses pagados',
+  value: 'INTERESES_PAGADOS',
+  heading: 'Gastos de Financiación',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+const interesesBancarios = new Account({
+  name: 'Intereses bancarios',
+  value: 'INTERESES_BANCARIOS',
+  heading: 'Gastos de Financiación',
+  group: 'pérdida',
+  balance: 'deudor'
+});
+
+// Ganancia
+
+const ventas = new Account({
+  name: 'Ventas',
+  value: 'VENTAS',
+  heading: 'Cuentas de Resultado Positivo',
+  group: 'ganancia',
+  balance: 'acreedor'
+});
+
+const interesesGanados = new Account({
+  name: 'Intereses ganados',
+  value: 'INTERESES_GANADOS',
+  heading: 'Cuentas de Resultado Positivo',
+  group: 'ganancia',
+  balance: 'acreedor'
+});
+
+const descuentosGanados = new Account({
+  name: 'Descuentos ganados',
+  value: 'DESCUENTOS_GANADOS',
+  heading: 'Cuentas de Resultado Positivo',
+  group: 'ganancia',
+  balance: 'acreedor'
+});
+
+const alquileresCobrados = new Account({
+  name: 'Alquileres cobrados',
+  value: 'ALQUILERES_COBRADOS',
+  heading: 'Cuentas de Resultado Positivo',
+  group: 'ganancia',
+  balance: 'deudor'
+});
+
+const comisionesCobradas = new Account({
+  name: 'Comisiones cobradas',
+  value: 'COMISIONES_COBRADAS',
+  heading: 'Cuentas de Resultado Positivo',
+  group: 'ganancia',
+  balance: 'deudor'
 });
 
 export const cuentasContables = [
@@ -322,5 +548,36 @@ export const cuentasContables = [
 
   // Patrimonio Neto
   capitalSocial,
-  resultadosDelEjercicio
+  resultadosDelEjercicio,
+
+  // Pérdida
+  gastosGenerales,
+  serviciosPagados,
+  gastosDeMantenimiento,
+  gastosBancarios,
+  selladoBancario,
+  comisionesBancarias,
+  sueldosYJornales,
+  cargasSociales,
+  art,
+  despido,
+  quebrantoPorDespido,
+  alquileresPagados,
+  segurosPagados,
+  fletes,
+  impuestosPagados,
+  descuentosPerdidos,
+  gastosDePublicidad,
+  comisionesPagadas,
+  cuotaAutonoma,
+  cuotaMonotributo,
+  interesesPagados,
+  interesesBancarios,
+
+  // Ganancia
+  ventas,
+  interesesGanados,
+  descuentosGanados,
+  alquileresCobrados,
+  comisionesCobradas
 ];
