@@ -1,11 +1,10 @@
-import { ActionIcon, Button } from '@mantine/core';
+import { ActionIcon } from '@mantine/core';
 import { Trash } from 'tabler-icons-react';
 import Account from '../models/account';
-import { ItemType } from '../models/item';
 
 type ItemComponentType = {
   id: string,
-  account: Account,
+  account?: Account,
   debtorSum: number,
   creditorSum: number,
   deleteItem: (id: string) => void;
@@ -14,7 +13,7 @@ type ItemComponentType = {
 const ItemComponent = ({ id, account, debtorSum, creditorSum, deleteItem }: ItemComponentType) => {
   return (
     <div className='flex justify-between items-center bg-white border-2 border-blue-400 p-2 rounded-xl'>
-      <p className='md:text-lg text-blue-400 p-2 font-semibold underline underline-offset-1'>{account.name}</p>
+      <p className='md:text-lg text-blue-400 p-2 font-semibold underline underline-offset-1'>{account?.name}</p>
       <p className='p-2'>
         Debe:
         {' '}
@@ -25,7 +24,11 @@ const ItemComponent = ({ id, account, debtorSum, creditorSum, deleteItem }: Item
         {' '}
         <b>{creditorSum}</b>
       </p>
-      <ActionIcon className='transition duration-150 m-2 hover:bg-red-900' variant="outline" color="red">
+      <ActionIcon
+        onClick={() => deleteItem(id)}
+        className='transition duration-150 m-2 hover:bg-red-900'
+        variant="outline"
+        color="red">
         <Trash />
       </ActionIcon>
     </div>

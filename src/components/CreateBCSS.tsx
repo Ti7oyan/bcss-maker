@@ -1,5 +1,5 @@
 import { Item } from '../models/item';
-import { Box, Divider, Table } from '@mantine/core';
+import { Box, Table } from '@mantine/core';
 
 type CreateBCSSType = {
   items: Item[];
@@ -18,7 +18,7 @@ const getSums = (items: Item[]) => {
 
 const getGroupTotal = (group: string, items: Item[]) => {
   let balanceGroup = 0;
-  const groupAccounts = items.filter((item) => item.account.group === group);
+  const groupAccounts = items.filter((item) => item.account?.group === group);
   const totalGroup = groupAccounts.forEach((item) => balanceGroup += item.balance ?? 0);
 
   return balanceGroup;
@@ -126,15 +126,15 @@ const Total = ({ items }: CreateBCSSType) => {
 const CreateBCSS = ({ items }: CreateBCSSType) => {
   const rows = items.map((item) => (
     <tr className='table-columns' key={item.id}>
-      <td>{item.account.name}</td>
+      <td>{item.account?.name}</td>
       <td>{item.debtorSum}</td>
       <td>{item.creditorSum}</td>
-      <td>{item.account.balance === 'deudor' ? item.balance : '-'}</td>
-      <td>{item.account.balance === 'acreedor' ? item.balance : '-'}</td>
-      <td>{item.account.group === 'activo' ? item.balance : '-'}</td>
-      <td>{item.account.group === 'pasivo' || item.account.group === 'patrimonio neto' ? item.balance : '-'}</td>
-      <td>{item.account.group === 'pérdida' ? item.balance : '-'}</td>
-      <td>{item.account.group === 'ganancia' ? item.balance : '-'}</td>
+      <td>{item.account?.balance === 'deudor' ? item.balance : '-'}</td>
+      <td>{item.account?.balance === 'acreedor' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'activo' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'pasivo' || item.account?.group === 'patrimonio neto' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'pérdida' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'ganancia' ? item.balance : '-'}</td>
     </tr>
   ));
 

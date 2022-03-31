@@ -2,14 +2,14 @@ import Account from './account';
 
 export type ItemType = {
   id: string;
-  account: Account;
+  account?: Account;
   debtorSum: number;
   creditorSum: number;
 }
 
 export class Item {
   public id: string;
-  public account: Account;
+  public account?: Account;
   public debtorSum: number;
   public creditorSum: number;
 
@@ -21,7 +21,7 @@ export class Item {
   }
 
   public get balance() {
-    if (this.account.balance === 'deudor') return this.debtorSum - this.creditorSum;
-    else if (this.account.balance === 'acreedor') return this.creditorSum - this.debtorSum;
+    if (this.account?.balance === 'deudor') return this.debtorSum - this.creditorSum;
+    else if (this.account?.balance === 'acreedor') return this.creditorSum - this.debtorSum;
   }
 }

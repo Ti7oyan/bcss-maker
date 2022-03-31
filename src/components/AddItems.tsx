@@ -21,11 +21,11 @@ const AddItems = ({ createItem, displayModal }: AddItemsType) => {
   const [selectAccount, setSelectAccount] = useState<string | null>('');
   const [debtorTotal, setDebtorTotal] = useState<number | undefined>(0);
   const [creditorTotal, setCreditorTotal] = useState<number | undefined>(0);
-  const [account, setAccount] = useState<Account>(cuentasContables[0]);
+  const [account, setAccount] = useState<Account>();
 
   useEffect(() => {
     const finalAccount = cuentasContables.find((account) => account.value === selectAccount);
-    setAccount(finalAccount ?? cuentasContables[0]);
+    setAccount(finalAccount);
   }, [selectAccount]);
   
 
@@ -68,12 +68,12 @@ const AddItems = ({ createItem, displayModal }: AddItemsType) => {
       <Button
         color="blue"
         onClick={() => {
-          if (typeof(account) != undefined) {
-            if (typeof(debtorTotal) != undefined && typeof creditorTotal != undefined) {
+          if (selectAccount != '') {
+            if (debtorTotal != 0 || creditorTotal != 0) {
               createItem({ id: uuid(), account: account, debtorSum: debtorTotal ?? 0, creditorSum: creditorTotal ?? 0 });
               displayModal(false);
-            }
-          } else toast.error('No rellenaste los campos requeridos.');
+            } else toast.error('No pusiste ningún valor.');
+          } else toast.error('No escogiste una cuenta.');
         }}
         className='border-blue-200'
         variant='light'
