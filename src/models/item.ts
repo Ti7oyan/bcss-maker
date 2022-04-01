@@ -1,27 +1,36 @@
-import Account from './account';
+import { Account } from './account';
 
 export type ItemType = {
   id: string;
-  account?: Account;
-  debtorSum: number;
-  creditorSum: number;
+  account: Account;
+  debts: number;
+  credits: number;
 }
 
-export class Item {
-  public id: string;
-  public account?: Account;
-  public debtorSum: number;
-  public creditorSum: number;
+class Item {
+  private id: string;
+  private account: Account;
+  private debts: number;
+  private credits: number;
 
-  constructor ({ id, account, debtorSum, creditorSum }: ItemType) {
+  constructor ({ id, account, debts, credits }: ItemType) {
     this.id = id;
     this.account = account;
-    this.debtorSum = debtorSum;
-    this.creditorSum = creditorSum;
+    this.debts = debts;
+    this.credits = credits;
   }
 
-  public get balance() {
-    if (this.account?.balance === 'deudor') return this.debtorSum - this.creditorSum;
-    else if (this.account?.balance === 'acreedor') return this.creditorSum - this.debtorSum;
+  public getId() { return this.id; }
+  public getAccount() { return this.account; }
+  public getDebts() { return this.debts; }
+  public getCredits() { return this.credits; }
+  public getBalance() {
+    if (this.account.getBalance() === 'deudor') {
+      return Math.abs((this.debts - this.credits));
+    } else {
+      return Math.abs((this.credits - this.debts));
+    }
   }
 }
+
+export default Item;
