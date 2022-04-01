@@ -7,7 +7,7 @@ import ItemComponent from './components/ItemComponent';
 import HeaderComponent from './components/HeaderComponent';
 
 // Library
-import { Item, ItemType } from './models/item';
+import  Item, { ItemType } from './models/item';
 import { Toaster } from 'react-hot-toast';
 import CreateBCSS from './components/CreateBCSS';
 
@@ -16,19 +16,19 @@ const App = () => {
   const [bcssItems, setBcssItems] = useState<Item[]>([]);
   const [openedAddItems, setOpenedAddItems] = useState<boolean>(false);
 
-  function createItem({ id, account, debtorSum, creditorSum}: ItemType) {
+  function createItem({ id, account, debts, credits}: ItemType) {
     const newItem = new Item({
       id: id,
       account: account,
-      debtorSum: debtorSum,
-      creditorSum: creditorSum
+      debts: debts,
+      credits: credits
     });
 
     setItems([...items, newItem]);
   }
 
   function deleteItem(id: string) {
-    const newItems = items.filter((item) => item.id != id);
+    const newItems = items.filter((item) => item.getId() != id);
 
     setItems(newItems);
   }
@@ -60,11 +60,8 @@ const App = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
             {items.map((item) => (
               <ItemComponent
-                key={item.id}
-                id={item.id}
-                account={item.account}
-                debtorSum={item.debtorSum}
-                creditorSum={item.creditorSum}
+                key={item.getId()}
+                item={item}
                 deleteItem={deleteItem}
               />
             ))}
