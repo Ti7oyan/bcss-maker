@@ -1,13 +1,4 @@
-// import Account from '../models/account';
-import createAccount from '../models/account';
-
-const dummyAccount = createAccount({
-  name: 'Desarrollado por Ticiano Morvan',
-  value: 'DUMMY_ACCOUNT',
-  group: 'ganancia',
-  heading: 'Cuentas de Resultado Positivo',
-  balance: 'acreedor'
-});
+import Account from '../models/account';
 
 // Activo
 
@@ -15,7 +6,7 @@ const dummyAccount = createAccount({
 
 // Caja y Banco
 
-const caja = createAccount({
+const caja = new Account({
   name: 'Caja',
   value: 'CAJA',
   heading: 'Caja y Banco',
@@ -23,7 +14,7 @@ const caja = createAccount({
   balance: 'deudor'
 });
 
-const bancoCuentaCorriente = createAccount({
+const bancoCuentaCorriente = new Account({
   name: 'Banco cuenta corriente',
   value: 'BANCO_CUENTA_CORRIENTE',
   heading: 'Caja y Banco',
@@ -31,7 +22,7 @@ const bancoCuentaCorriente = createAccount({
   balance: 'deudor'
 });
 
-const valoresADepositar = createAccount({
+const valoresADepositar = new Account({
   name: 'Valores a depositar',
   value: 'VALORES_DEPOSITAR',
   heading: 'Caja y Banco',
@@ -39,7 +30,7 @@ const valoresADepositar = createAccount({
   balance: 'deudor'
 });
 
-const bancoCajaDeAhorro = createAccount({
+const bancoCajaDeAhorro = new Account({
   name: 'Banco caja de ahorro',
   value: 'BANCO_CAJA_AHORRO',
   heading: 'Caja y Banco',
@@ -49,7 +40,7 @@ const bancoCajaDeAhorro = createAccount({
 
 // Créditos por Ventas
 
-const deudoresPorVenta = createAccount({
+const deudoresPorVenta = new Account({
   name: 'Deudores por venta',
   value: 'DEUDORES_POR_VENTA',
   heading: 'Créditos por Ventas',
@@ -57,7 +48,7 @@ const deudoresPorVenta = createAccount({
   balance: 'deudor'
 });
 
-const documentosACobrar = createAccount({
+const documentosACobrar = new Account({
   name: 'Documentos a cobrar',
   value: 'DOCUMENTOS_COBRAR',
   heading: 'Créditos por Ventas',
@@ -65,7 +56,7 @@ const documentosACobrar = createAccount({
   balance: 'deudor'
 });
 
-const tarjetaDeCreditoACobrar = createAccount({
+const tarjetaDeCreditoACobrar = new Account({
   name: 'Tarjeta de crédito a cobrar',
   value: 'TARJETA_CREDITO_COBRAR',
   heading: 'Créditos por Ventas',
@@ -75,7 +66,7 @@ const tarjetaDeCreditoACobrar = createAccount({
 
 // Otros créditos
 
-const deudoresVarios = createAccount({
+const deudoresVarios = new Account({
   name: 'Deudores varios',
   value: 'DEUDORES_VARIOS',
   heading: 'Otros Créditos',
@@ -83,7 +74,7 @@ const deudoresVarios = createAccount({
   balance: 'deudor'
 });
 
-const socioCuentaAporte = createAccount({
+const socioCuentaAporte = new Account({
   name: 'Socio cuenta aporte',
   value: 'SOCIO_CUENTA_APORTE',
   heading: 'Otros Créditos',
@@ -91,7 +82,7 @@ const socioCuentaAporte = createAccount({
   balance: 'deudor'
 });
 
-const motivoACobrar = createAccount({
+const motivoACobrar = new Account({
   name: 'Motivo a cobrar',
   value: 'MOTIVO_COBRAR',
   heading: 'Otros Créditos',
@@ -101,7 +92,7 @@ const motivoACobrar = createAccount({
 
 // Bienes de cambio
 
-const mercaderias = createAccount({
+const mercaderias = new Account({
   name: 'Mercaderías',
   value: 'MERCADERIAS',
   heading: 'Bienes de Cambio',
@@ -113,7 +104,7 @@ const mercaderias = createAccount({
 
 // Bienes de Uso
 
-const mueblesYUtiles = createAccount({
+const mueblesYUtiles = new Account({
   name: 'Muebles y útiles',
   value: 'MUEBLES_UTILES',
   heading: 'Bienes de Uso',
@@ -121,7 +112,7 @@ const mueblesYUtiles = createAccount({
   balance: 'deudor'
 });
 
-const equipamientoDeComputacion = createAccount({
+const equipamientoDeComputacion = new Account({
   name: 'Equipamiento de computación',
   value: 'EQUIPAMIENTO_COMPUTACION',
   heading: 'Bienes de Uso',
@@ -129,7 +120,7 @@ const equipamientoDeComputacion = createAccount({
   balance: 'deudor'
 });
 
-const herramientas = createAccount({
+const herramientas = new Account({
   name: 'Herramientas',
   value: 'HERRAMIENTAS',
   heading: 'Bienes de Uso',
@@ -137,7 +128,7 @@ const herramientas = createAccount({
   balance: 'deudor'
 });
 
-const maquinarias = createAccount({
+const maquinarias = new Account({
   name: 'Maquinarias',
   value: 'MAQUINARIAS',
   heading: 'Bienes de Uso',
@@ -145,7 +136,7 @@ const maquinarias = createAccount({
   balance: 'deudor'
 });
 
-const instalaciones = createAccount({
+const instalaciones = new Account({
   name: 'Instalaciones',
   value: 'INSTALACIONES',
   heading: 'Bienes de Uso',
@@ -153,7 +144,7 @@ const instalaciones = createAccount({
   balance: 'deudor'
 });
 
-const rodados = createAccount({
+const rodados = new Account({
   name: 'Rodados',
   value: 'RODADOS',
   heading: 'Bienes de Uso',
@@ -161,7 +152,7 @@ const rodados = createAccount({
   balance: 'deudor'
 });
 
-const inmuebles = createAccount({
+const inmuebles = new Account({
   name: 'Inmuebles',
   value: 'INMUEBLES',
   heading: 'Bienes de Uso',
@@ -169,7 +160,7 @@ const inmuebles = createAccount({
   balance: 'deudor'
 });
 
-const terrenos = createAccount({
+const terrenos = new Account({
   name: 'Terrenos',
   value: 'TERRENOS',
   heading: 'Bienes de Uso',
@@ -179,7 +170,7 @@ const terrenos = createAccount({
 
 // Bienes Intangibles
 
-const llaveDeNegocio = createAccount({
+const llaveDeNegocio = new Account({
   name: 'Llave de negocio',
   value: 'LLAVE_NEGOCIO',
   heading: 'Bienes Intangibles',
@@ -189,7 +180,7 @@ const llaveDeNegocio = createAccount({
 
 // Cargos Diferidos
 
-const gastosDeOrganizacion = createAccount({
+const gastosDeOrganizacion = new Account({
   name: 'Gastos de organización',
   value: 'GASTOS_ORGANIZACION',
   heading: 'Cargos Diferidos',
@@ -203,7 +194,7 @@ const gastosDeOrganizacion = createAccount({
 
 // Deudas comerciales
 
-const proveedores = createAccount({
+const proveedores = new Account({
   name: 'Proveedores',
   value: 'PROVEEDORES',
   heading: 'Deudas Comerciales',
@@ -211,7 +202,7 @@ const proveedores = createAccount({
   balance: 'acreedor'
 });
 
-const acreedoresVarios = createAccount({
+const acreedoresVarios = new Account({
   name: 'Acreedores varios',
   value: 'ACREEDORES_VARIOS',
   heading: 'Deudas Comerciales',
@@ -219,7 +210,7 @@ const acreedoresVarios = createAccount({
   balance: 'acreedor'
 });
 
-const documentosAPagar = createAccount({
+const documentosAPagar = new Account({
   name: 'Documentos a pagar',
   value: 'DOCUMENTOS_PAGAR',
   heading: 'Deudas Comerciales',
@@ -229,7 +220,7 @@ const documentosAPagar = createAccount({
 
 // Deudas fiscales
 
-const impuestosAPagar = createAccount({
+const impuestosAPagar = new Account({
   name: 'Impuestos a pagar',
   value: 'IMPUESTOS_PAGAR',
   heading: 'Deudas Fiscales',
@@ -239,7 +230,7 @@ const impuestosAPagar = createAccount({
 
 // Deudas sociales
 
-const sueldosAPagar = createAccount({
+const sueldosAPagar = new Account({
   name: 'Sueldos a pagar',
   value: 'SUELDOS_PAGAR',
   heading: 'Deudas Previsionales/sociales',
@@ -249,7 +240,7 @@ const sueldosAPagar = createAccount({
 
 // Otras deudas
 
-const motivoAPagar = createAccount({
+const motivoAPagar = new Account({
   name: 'Motivo a pagar',
   value: 'MOTIVO_PAGAR',
   heading: 'Otras Deudas',
@@ -261,7 +252,7 @@ const motivoAPagar = createAccount({
 
 // Deudas financieras
 
-const prendasAPagar = createAccount({
+const prendasAPagar = new Account({
   name: 'Prendas a pagar',
   value: 'PRENDAS_PAGAR',
   heading: 'Deudas Financieras',
@@ -269,7 +260,7 @@ const prendasAPagar = createAccount({
   balance: 'acreedor'
 });
 
-const hipotecasAPagar = createAccount({
+const hipotecasAPagar = new Account({
   name: 'Hipotecas a pagar',
   value: 'HIPOTECAS_PAGAR',
   heading: 'Deudas Financieras',
@@ -279,7 +270,7 @@ const hipotecasAPagar = createAccount({
 
 // Patrimonio Neto
 
-const capitalSocial = createAccount({
+const capitalSocial = new Account({
   name: 'Capital social',
   value: 'CAPITAL_SOCIAL',
   heading: 'Patrimonio Neto',
@@ -287,7 +278,7 @@ const capitalSocial = createAccount({
   balance: 'acreedor'
 });
 
-const resultadosDelEjercicio = createAccount({
+const resultadosDelEjercicio = new Account({
   name: 'Resultados del ejercicio',
   value: 'RESULTADOS_EJERCICIO',
   heading: 'Patrimonio Neto',
@@ -299,7 +290,7 @@ const resultadosDelEjercicio = createAccount({
 
 // Gastos de Administración
 
-const gastosGenerales = createAccount({
+const gastosGenerales = new Account({
   name: 'Gastos generales',
   value: 'GASTOS_GENERALES',
   heading: 'Gastos de Administración',
@@ -307,7 +298,7 @@ const gastosGenerales = createAccount({
   balance: 'deudor'
 });
 
-const serviciosPagados = createAccount({
+const serviciosPagados = new Account({
   name: 'Servicios pagados',
   value: 'SERVICIOS_PAGADOS',
   heading: 'Gastos de Administración',
@@ -315,7 +306,7 @@ const serviciosPagados = createAccount({
   balance: 'deudor'
 });
 
-const gastosDeMantenimiento = createAccount({
+const gastosDeMantenimiento = new Account({
   name: 'Gastos de mantenimiento',
   value: 'GASTOS_MANTENIMIENTO',
   heading: 'Gastos de Administración',
@@ -323,7 +314,7 @@ const gastosDeMantenimiento = createAccount({
   balance: 'deudor'
 });
 
-const gastosBancarios = createAccount({
+const gastosBancarios = new Account({
   name: 'Gastos bancarios',
   value: 'GASTOS_BANCARIOS',
   heading: 'Gastos de Administración',
@@ -331,7 +322,7 @@ const gastosBancarios = createAccount({
   balance: 'deudor'
 });
 
-const selladoBancario = createAccount({
+const selladoBancario = new Account({
   name: 'Sellado bancario',
   value: 'SELLADO_BANCARIO',
   heading: 'Gastos de Administración',
@@ -339,7 +330,7 @@ const selladoBancario = createAccount({
   balance: 'deudor'
 });
 
-const comisionesBancarias = createAccount({
+const comisionesBancarias = new Account({
   name: 'Comisiones bancarias',
   value: 'COMISIONES_BANCARIAS',
   heading: 'Gastos de Administración',
@@ -347,7 +338,7 @@ const comisionesBancarias = createAccount({
   balance: 'deudor'
 });
 
-const sueldosYJornales = createAccount({
+const sueldosYJornales = new Account({
   name: 'Sueldos y jornales',
   value: 'SUELDOS_JORNALES',
   heading: 'Gastos de Administración',
@@ -355,7 +346,7 @@ const sueldosYJornales = createAccount({
   balance: 'deudor'
 });
 
-const cargasSociales = createAccount({
+const cargasSociales = new Account({
   name: 'Cargas sociales',
   value: 'CARGAS_SOCIALES',
   heading: 'Gastos de Administración',
@@ -363,7 +354,7 @@ const cargasSociales = createAccount({
   balance: 'deudor'
 });
 
-const art = createAccount({
+const art = new Account({
   name: 'A.R.T.',
   value: 'ART',
   heading: 'Gastos de Administración',
@@ -371,7 +362,7 @@ const art = createAccount({
   balance: 'deudor'
 });
 
-const despido = createAccount({
+const despido = new Account({
   name: 'Despido',
   value: 'DESPIDO',
   heading: 'Gastos de Administración',
@@ -379,7 +370,7 @@ const despido = createAccount({
   balance: 'deudor'
 });
 
-const quebrantoPorDespido = createAccount({
+const quebrantoPorDespido = new Account({
   name: 'Quebranto por despido',
   value: 'QUEBRANTO_DESPIDO',
   heading: 'Gastos de Administración',
@@ -387,7 +378,7 @@ const quebrantoPorDespido = createAccount({
   balance: 'deudor'
 });
 
-const alquileresPagados = createAccount({
+const alquileresPagados = new Account({
   name: 'Alquileres pagados',
   value: 'ALQUILERES_PAGADOS',
   heading: 'Gastos de Administración',
@@ -395,7 +386,7 @@ const alquileresPagados = createAccount({
   balance: 'deudor'
 });
 
-const segurosPagados = createAccount({
+const segurosPagados = new Account({
   name: 'Seguros pagados',
   value: 'SEGUROS_PAGADOS',
   heading: 'Gastos de Administración',
@@ -405,7 +396,7 @@ const segurosPagados = createAccount({
 
 // Gastos de comercialización
 
-const fletes = createAccount({
+const fletes = new Account({
   name: 'Fletes',
   value: 'FLETES',
   heading: 'Gastos de Comercialización',
@@ -413,7 +404,7 @@ const fletes = createAccount({
   balance: 'deudor'
 });
 
-const impuestosPagados = createAccount({
+const impuestosPagados = new Account({
   name: 'Impuestos pagados',
   value: 'IMPUESTOS_PAGADOS',
   heading: 'Gastos de Comercialización',
@@ -421,7 +412,7 @@ const impuestosPagados = createAccount({
   balance: 'deudor'
 });
 
-const descuentosPerdidos = createAccount({
+const descuentosPerdidos = new Account({
   name: 'Descuentos perdidos',
   value: 'DESCUENTOS_PERDIDOS',
   heading: 'Gastos de Comercialización',
@@ -429,7 +420,7 @@ const descuentosPerdidos = createAccount({
   balance: 'deudor'
 });
 
-const gastosDePublicidad = createAccount({
+const gastosDePublicidad = new Account({
   name: 'Gastos de publicidad',
   value: 'GASTOS_PUBLICIDAD',
   heading: 'Gastos de Comercialización',
@@ -437,7 +428,7 @@ const gastosDePublicidad = createAccount({
   balance: 'deudor'
 });
 
-const comisionesPagadas = createAccount({
+const comisionesPagadas = new Account({
   name: 'Comisiones pagadas',
   value: 'COMISIONES_PAGADAS',
   heading: 'Gastos de Comercialización',
@@ -445,7 +436,7 @@ const comisionesPagadas = createAccount({
   balance: 'deudor'
 });
 
-const cuotaAutonoma = createAccount({
+const cuotaAutonoma = new Account({
   name: 'Cuota autónoma',
   value: 'CUOTA_AUTONOMA',
   heading: 'Gastos de Comercialización',
@@ -453,7 +444,7 @@ const cuotaAutonoma = createAccount({
   balance: 'deudor'
 });
 
-const cuotaMonotributo = createAccount({
+const cuotaMonotributo = new Account({
   name: 'Cuota monotributo',
   value: 'CUOTA_MONOTRIBUTO',
   heading: 'Gastos de Comercialización',
@@ -463,7 +454,7 @@ const cuotaMonotributo = createAccount({
 
 // Gastos de financiación
 
-const interesesPagados = createAccount({
+const interesesPagados = new Account({
   name: 'Intereses pagados',
   value: 'INTERESES_PAGADOS',
   heading: 'Gastos de Financiación',
@@ -471,7 +462,7 @@ const interesesPagados = createAccount({
   balance: 'deudor'
 });
 
-const interesesBancarios = createAccount({
+const interesesBancarios = new Account({
   name: 'Intereses bancarios',
   value: 'INTERESES_BANCARIOS',
   heading: 'Gastos de Financiación',
@@ -481,7 +472,7 @@ const interesesBancarios = createAccount({
 
 // Ganancia
 
-const ventas = createAccount({
+const ventas = new Account({
   name: 'Ventas',
   value: 'VENTAS',
   heading: 'Cuentas de Resultado Positivo',
@@ -489,7 +480,7 @@ const ventas = createAccount({
   balance: 'acreedor'
 });
 
-const interesesGanados = createAccount({
+const interesesGanados = new Account({
   name: 'Intereses ganados',
   value: 'INTERESES_GANADOS',
   heading: 'Cuentas de Resultado Positivo',
@@ -497,7 +488,7 @@ const interesesGanados = createAccount({
   balance: 'acreedor'
 });
 
-const descuentosGanados = createAccount({
+const descuentosGanados = new Account({
   name: 'Descuentos ganados',
   value: 'DESCUENTOS_GANADOS',
   heading: 'Cuentas de Resultado Positivo',
@@ -505,7 +496,7 @@ const descuentosGanados = createAccount({
   balance: 'acreedor'
 });
 
-const alquileresCobrados = createAccount({
+const alquileresCobrados = new Account({
   name: 'Alquileres cobrados',
   value: 'ALQUILERES_COBRADOS',
   heading: 'Cuentas de Resultado Positivo',
@@ -513,7 +504,7 @@ const alquileresCobrados = createAccount({
   balance: 'deudor'
 });
 
-const comisionesCobradas = createAccount({
+const comisionesCobradas = new Account({
   name: 'Comisiones cobradas',
   value: 'COMISIONES_COBRADAS',
   heading: 'Cuentas de Resultado Positivo',
@@ -588,7 +579,5 @@ export const cuentasContables = [
   interesesGanados,
   descuentosGanados,
   alquileresCobrados,
-  comisionesCobradas,
-
-  dummyAccount
+  comisionesCobradas
 ];

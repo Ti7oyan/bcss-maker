@@ -1,4 +1,4 @@
-type AccountType = {
+export type AccountType = {
   name: string;
   value: string;
   heading: 'Caja y Banco' | 'Inversiones' | 'Créditos por Ventas' | 'Otros Créditos' | 'Bienes de Cambio' | 'Bienes de Uso' |
@@ -9,12 +9,12 @@ type AccountType = {
   balance: 'deudor' | 'acreedor';
 }
 
-export class Account {
-  private name: string;
-  private value: string;
-  private heading: string;
-  private group: string;
-  private balance: string;
+class Account {
+  public name: string;
+  public value: string;
+  public heading: string;
+  public group: string;
+  public balance: string;
 
   constructor ({ name, value, heading, group, balance }: AccountType) {
     this.name = name;
@@ -23,22 +23,6 @@ export class Account {
     this.group = group;
     this.balance = balance;
   }
-
-  public getName() { return this.name; }
-  public getValue() { return this.value; }
-  public getHeading() { return this.heading; }
-  public getGroup() { return this.group; }
-  public getBalance() { return this.balance; }
 }
 
-const createAccount = ({ name, value, heading, group, balance }: AccountType) => {
-  return new Account ({
-    name: name,
-    value: value,
-    heading: heading,
-    group: group,
-    balance: balance
-  });
-};
-
-export default createAccount;
+export default Account;

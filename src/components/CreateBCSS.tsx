@@ -1,24 +1,14 @@
-import Item from '../models/item';
+import { Item } from '../models/item';
 import { Box, Table } from '@mantine/core';
 
-type TotalsType = {
-  totals: {
-    sums: {
-      debts: number,
-      credits: number,
-    },
-    activo: number,
-    pasivo: number,
-    patrimonioNeto: number,
-    perdida: number,
-    ganancia: number
-  }
+type CreateBCSSType = {
+  items: Item[];
 }
 
 const getSums = (items: Item[]) => {
   let [debts, credits] = [0, 0];
-  const totalDebts = items.forEach((item) => debts += item.getDebts());
-  const totalCredits = items.forEach((item) => credits += item.getCredits());
+  const totalDebts = items.forEach((item) => debts += item.debtorSum);
+  const totalCredits = items.forEach((item) => credits += item.creditorSum);
 
   return {
     debts,
@@ -26,50 +16,42 @@ const getSums = (items: Item[]) => {
   };
 };
 
-const getTotals = (items: Item[]) => {
-  const totals = {
-    sums: getSums(items),
-    activo: getGroupTotal('activo', items),
-    pasivo: getGroupTotal('pasivo', items),
-    patrimonioNeto: getGroupTotal('patrimonio neto', items),
-    perdida: getGroupTotal('pérdida', items),
-    ganancia: getGroupTotal('ganancia', items)
-  };
-
-  return totals;
-};
-
 const getGroupTotal = (group: string, items: Item[]) => {
   let balanceGroup = 0;
-  const groupAccounts = items.filter((item) => item.getAccount().getGroup() === group);
-  const totalGroup = groupAccounts.forEach((item) => balanceGroup += item.getBalance() ?? '-');
+  const groupAccounts = items.filter((item) => item.account?.group === group);
+  const totalGroup = groupAccounts.forEach((item) => balanceGroup += item.balance ?? 0);
 
   return balanceGroup;
 };
 
-const getResult = (perdida: number, ganancia: number) => {
-  return Math.abs(ganancia - perdida);
-};
+const Subtotal = ({ items }: CreateBCSSType) => {
+  const sums = getSums(items);
+  const activo = getGroupTotal('activo',items);
+  const pasivo = getGroupTotal('pasivo', items);
+  const patrimonioNeto = getGroupTotal('patrimonio neto', items);
+  const perdida = getGroupTotal('pérdida', items);
+  const ganancia = getGroupTotal('ganancia', items);
 
-const Subtotal = ({ totals }: TotalsType) => {
   return (
     <tr>
       <td>SUBTOTAL</td>
-      <td>{totals.sums.debts}</td>
-      <td>{totals.sums.credits}</td>
-      <td>{totals.activo + totals.perdida}</td>
-      <td>{totals.pasivo + totals.patrimonioNeto + totals.ganancia}</td>
-      <td>{totals.activo}</td>
-      <td>{totals.pasivo + totals.patrimonioNeto}</td>
-      <td>{totals.perdida}</td>
-      <td>{totals.ganancia}</td>
+      <td>{sums.debts}</td>
+      <td>{sums.credits}</td>
+      <td>{activo + perdida}</td>
+      <td>{pasivo + patrimonioNeto + ganancia}</td>
+      <td>{activo}</td>
+      <td>{pasivo + patrimonioNeto}</td>
+      <td>{perdida}</td>
+      <td>{ganancia}</td>
     </tr>
   );
 };
 
-const Results = ({ totals }: TotalsType) => {
-  const [perdida, ganancia] = [totals.perdida, totals.ganancia];
-  const result = getResult(perdida, ganancia);
+const Results = ({ items }: CreateBCSSType) => {
+  const perdida = getGroupTotal('pérdida', items);
+  const ganancia = getGroupTotal('ganancia', items);
+
+  const result = ganancia - perdida;
 
   return (
     <tr>
@@ -86,10 +68,14 @@ const Results = ({ totals }: TotalsType) => {
   );
 };
 
-const Total = ({ totals }: TotalsType) => {
-  const [perdida, ganancia] = [totals.perdida, totals.ganancia];
-  const result = getResult(totals.perdida, totals.ganancia);
-
+const Total = ({ items }: CreateBCSSType) => {
+  const sums = getSums(items);
+  const activo = getGroupTotal('activo',items);
+  const pasivo = getGroupTotal('pasivo', items);
+  const patrimonioNeto = getGroupTotal('patrimonio neto', items);
+  const perdida = getGroupTotal('pérdida', items);
+  const ganancia = getGroupTotal('ganancia', items);
+  const result = ganancia - perdida;
   let finalResult: {
     activo?: number,
     pasivo?: number,
@@ -98,26 +84,26 @@ const Total = ({ totals }: TotalsType) => {
     perdida?: number,
     ganancia?: number
   } = {
-    activo: totals.activo,
-    pasivo: totals.pasivo,
-    patrimonioNeto: totals.patrimonioNeto,
-    pasivoPatrimonioNeto: totals.pasivo + totals.patrimonioNeto,
-    perdida: totals.perdida,
-    ganancia: totals.ganancia
+    activo: activo,
+    pasivo: pasivo,
+    patrimonioNeto: patrimonioNeto,
+    pasivoPatrimonioNeto: pasivo + patrimonioNeto,
+    perdida: perdida,
+    ganancia: ganancia
   };
 
   if (ganancia >= perdida) {
     finalResult = {
-      activo: totals.activo,
-      pasivoPatrimonioNeto: totals.pasivo + totals.patrimonioNeto + result,
+      activo: activo,
+      pasivoPatrimonioNeto: pasivo + patrimonioNeto + result,
       perdida: perdida + result,
-      ganancia: totals.ganancia
+      ganancia: ganancia
     };
   } else {
     finalResult = {
-      activo: totals.activo + result,
-      pasivoPatrimonioNeto: totals.pasivo + totals.patrimonioNeto,
-      perdida: totals.perdida,
+      activo: activo + result,
+      pasivoPatrimonioNeto: pasivo + patrimonioNeto,
+      perdida: perdida,
       ganancia: ganancia + result
     };
   }
@@ -125,10 +111,10 @@ const Total = ({ totals }: TotalsType) => {
   return (
     <tr>
       <td>TOTAL</td>
-      <td>{totals.sums.debts}</td>
-      <td>{totals.sums.credits}</td>
-      <td>{totals.activo + totals.perdida}</td>
-      <td>{totals.pasivo + totals.patrimonioNeto + totals.ganancia}</td>
+      <td>{sums.debts}</td>
+      <td>{sums.credits}</td>
+      <td>{activo + perdida}</td>
+      <td>{pasivo + patrimonioNeto + ganancia}</td>
       <td>{finalResult.activo}</td>
       <td>{finalResult.pasivoPatrimonioNeto}</td>
       <td>{finalResult.perdida}</td>
@@ -137,24 +123,18 @@ const Total = ({ totals }: TotalsType) => {
   );
 };
 
-type CreateBCSSType = { 
-  items: Item[]
-}
-
 const CreateBCSS = ({ items }: CreateBCSSType) => {
-  const totals = getTotals(items);
-
   const rows = items.map((item) => (
-    <tr className='table-columns' key={item.getId()}>
-      <td>{item.getAccount().getName()}</td>
-      <td>{item.getDebts()}</td>
-      <td>{item.getCredits()}</td>
-      <td>{item.getAccount().getBalance() === 'deudor' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getBalance() === 'acreedor' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'activo' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'pasivo' || item.getAccount().getGroup() === 'patrimonio neto' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'pérdida' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'ganancia' ? item.getBalance() : '-'}</td>
+    <tr className='table-columns' key={item.id}>
+      <td>{item.account?.name}</td>
+      <td>{item.debtorSum}</td>
+      <td>{item.creditorSum}</td>
+      <td>{item.account?.balance === 'deudor' ? item.balance : '-'}</td>
+      <td>{item.account?.balance === 'acreedor' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'activo' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'pasivo' || item.account?.group === 'patrimonio neto' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'pérdida' ? item.balance : '-'}</td>
+      <td>{item.account?.group === 'ganancia' ? item.balance : '-'}</td>
     </tr>
   ));
 
@@ -176,9 +156,9 @@ const CreateBCSS = ({ items }: CreateBCSSType) => {
         </thead>
         <tbody>
           {rows}
-          <Subtotal totals={totals} />
-          <Results totals={totals} />
-          <Total totals={totals} />
+          <Subtotal items={items} />
+          <Results items={items} />
+          <Total items={items} />
         </tbody>
       </Table>
     </Box>
