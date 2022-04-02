@@ -10,11 +10,11 @@ type AccountType = {
 }
 
 export class Account {
-  private name: string;
-  private value: string;
-  private heading: string;
-  private group: string;
-  private balance: string;
+  public name: string;
+  public value: string;
+  public heading: string;
+  public group: string;
+  public balance: string;
 
   constructor ({ name, value, heading, group, balance }: AccountType) {
     this.name = name;
@@ -23,12 +23,6 @@ export class Account {
     this.group = group;
     this.balance = balance;
   }
-
-  public getName() { return this.name; }
-  public getValue() { return this.value; }
-  public getHeading() { return this.heading; }
-  public getGroup() { return this.group; }
-  public getBalance() { return this.balance; }
 }
 
 const createAccount = ({ name, value, heading, group, balance }: AccountType) => {

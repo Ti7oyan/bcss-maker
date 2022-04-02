@@ -5,24 +5,24 @@ import { v4 as uuid } from 'uuid';
 
 // Own Lib
 import { cuentasContables } from '../lib/accounts';
-import { ItemType } from '../models/item';
+import { ItemType, getTotal } from '../models/item';
 import { Account } from '../models/account';
 import toast from 'react-hot-toast';
 
-const dummyAccount = cuentasContables.find((account) => account.getValue() === 'DUMMY_ACCOUNT')!;
+const dummyAccount = cuentasContables.find((account) => account.value === 'DUMMY_ACCOUNT')!;
 
 const accounts = cuentasContables.map((account: Account) => {
   return {
-    value: account.getValue(),
-    label: account.getName(),
-    group: account.getHeading(), 
-    disabled: account.getValue() !== dummyAccount?.getValue() ? false : true
+    value: account.value,
+    label: account.name,
+    group: account.heading, 
+    disabled: account.value !== dummyAccount?.value ? false : true
   };
 });
 
 
 type AddItemsType = {
-  createItem: ({ account, debts, credits}: ItemType) => void;
+  createItem: ({ id, account, debts, credits, total }: ItemType) => void;
   displayModal: Dispatch<SetStateAction<boolean>>
 }
 
@@ -33,7 +33,7 @@ const AddItems = ({ createItem, displayModal }: AddItemsType) => {
   const [account, setAccount] = useState<Account>(cuentasContables[0]);
 
   useEffect(() => {
-    const finalAccount = cuentasContables.find((account) => account.getValue() === selectAccount);
+    const finalAccount = cuentasContables.find((account) => account.value === selectAccount);
     setAccount(finalAccount ?? dummyAccount);
   }, [selectAccount]);
 
@@ -76,7 +76,15 @@ const AddItems = ({ createItem, displayModal }: AddItemsType) => {
         onClick={() => {
           if (selectAccount != '') {
             if (debtorTotal != 0 || creditorTotal != 0) {
-              createItem({ id: uuid(), account: account, debts: debtorTotal ?? 0, credits: creditorTotal ?? 0 });
+              createItem({
+                id: uuid(),
+                account: account,
+                debts: debtorTotal ?? 0,
+                credits: creditorTotal ?? 0,
+                total: getTotal(
+                  account, debtorTotal ?? 0, creditorTotal ?? 0
+                )
+              });
               displayModal(false);
             } else toast.error('No pusiste ningún valor.');
           } else toast.error('No escogiste una cuenta.');

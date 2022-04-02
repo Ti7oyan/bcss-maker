@@ -17,8 +17,8 @@ type TotalsType = {
 
 const getSums = (items: Item[]) => {
   let [debts, credits] = [0, 0];
-  const totalDebts = items.forEach((item) => debts += item.getDebts());
-  const totalCredits = items.forEach((item) => credits += item.getCredits());
+  const totalDebts = items.forEach((item) => debts += item.debts);
+  const totalCredits = items.forEach((item) => credits += item.credits);
 
   return {
     debts,
@@ -41,8 +41,8 @@ const getTotals = (items: Item[]) => {
 
 const getGroupTotal = (group: string, items: Item[]) => {
   let balanceGroup = 0;
-  const groupAccounts = items.filter((item) => item.getAccount().getGroup() === group);
-  const totalGroup = groupAccounts.forEach((item) => balanceGroup += item.getBalance() ?? '-');
+  const groupAccounts = items.filter((item) => item.account.group === group);
+  const totalGroup = groupAccounts.forEach((item) => balanceGroup += item.total ?? '-');
 
   return balanceGroup;
 };
@@ -145,16 +145,16 @@ const CreateBCSS = ({ items }: CreateBCSSType) => {
   const totals = getTotals(items);
 
   const rows = items.map((item) => (
-    <tr className='table-columns' key={item.getId()}>
-      <td>{item.getAccount().getName()}</td>
-      <td>{item.getDebts()}</td>
-      <td>{item.getCredits()}</td>
-      <td>{item.getAccount().getBalance() === 'deudor' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getBalance() === 'acreedor' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'activo' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'pasivo' || item.getAccount().getGroup() === 'patrimonio neto' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'pérdida' ? item.getBalance() : '-'}</td>
-      <td>{item.getAccount().getGroup() === 'ganancia' ? item.getBalance() : '-'}</td>
+    <tr className='table-columns' key={item.id}>
+      <td>{item.account.name}</td>
+      <td>{item.debts}</td>
+      <td>{item.credits}</td>
+      <td>{item.account.balance === 'deudor' ? item.total : '-'}</td>
+      <td>{item.account.balance === 'acreedor' ? item.total : '-'}</td>
+      <td>{item.account.group === 'activo' ? item.total : '-'}</td>
+      <td>{item.account.group === 'pasivo' || item.account.group === 'patrimonio neto' ? item.total : '-'}</td>
+      <td>{item.account.group === 'pérdida' ? item.total : '-'}</td>
+      <td>{item.account.group === 'ganancia' ? item.total : '-'}</td>
     </tr>
   ));
 

@@ -5,31 +5,30 @@ export type ItemType = {
   account: Account;
   debts: number;
   credits: number;
+  total: number;
 }
 
-class Item {
-  private id: string;
-  private account: Account;
-  private debts: number;
-  private credits: number;
+export const getTotal = (account: Account, debts: number, credits: number) => {
+  if (account.balance === 'deudor') {
+    return Math.abs(debts - credits);
+  }
 
-  constructor ({ id, account, debts, credits }: ItemType) {
+  return Math.abs(credits - debts);
+};
+
+class Item {
+  public id: string;
+  public account: Account;
+  public debts: number;
+  public credits: number;
+  public total: number;
+
+  constructor ({ id, account, debts, credits, total }: ItemType) {
     this.id = id;
     this.account = account;
     this.debts = debts;
     this.credits = credits;
-  }
-
-  public getId() { return this.id; }
-  public getAccount() { return this.account; }
-  public getDebts() { return this.debts; }
-  public getCredits() { return this.credits; }
-  public getBalance() {
-    if (this.account.getBalance() === 'deudor') {
-      return Math.abs((this.debts - this.credits));
-    } else {
-      return Math.abs((this.credits - this.debts));
-    }
+    this.total = total;
   }
 }
 

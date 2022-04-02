@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AppShell, Button, Modal } from '@mantine/core';
 import { Toaster } from 'react-hot-toast';
 
@@ -16,19 +16,31 @@ const App = () => {
   const [bcssItems, setBcssItems] = useState<Item[]>([]);
   const [openedAddItems, setOpenedAddItems] = useState<boolean>(false);
 
-  function createItem({ id, account, debts, credits }: ItemType) {
+  useEffect(() => {
+    console.log(localStorage.getItem('items'));
+  }, []);
+
+  useEffect(() => {
+    const savedItems = JSON.parse(localStorage.getItem('items')!);
+    if (savedItems) {
+      setItems(savedItems);
+    }
+  }, []);
+
+  function createItem({ id, account, debts, credits, total }: ItemType) {
     const newItem = new Item({
       id: id,
       account: account,
       debts: debts,
       credits: credits,
+      total: total
     });
 
     setItems([...items, newItem]);
   }
 
   function deleteItem(id: string) {
-    const newItems = items.filter((item) => item.getId() != id);
+    const newItems = items.filter((item) => item.id != id);
 
     setItems(newItems);
   }
@@ -36,10 +48,6 @@ const App = () => {
   function resetItems() {
     setItems([]);
   }
-
-  window.onbeforeunload = function() {
-    if (items.length >= 1) return 'Aún hay cuentas en uso, ¿seguro/a qué quieres salir?';
-  };
 
   return (
     <AppShell header={<HeaderComponent />}>
