@@ -3,9 +3,8 @@ import { Box } from '@mantine/core';
 const HeaderComponent = () => {
   return (
     <Box className='flex flex-col text-center p-4'>
-      <h2 className='text-gray-700'>GENERADOR DE</h2>
-      <h1 className='font-semibold text-3xl mt-3'>BALANCE DE COMPROBACIÓN DE SUMAS Y SALDOS</h1>
-      <h3>
+      <h1 className='font-semibold text-3xl m-2'>BALANCE DE COMPROBACIÓN DE SUMAS Y SALDOS</h1>
+      <h3 className='text-neutral-700'>
         Desarrollado por
         {' '}
         <a 
