@@ -65,10 +65,10 @@ const App = () => {
 
         <section>
           <h3 className="section-title">Verificá la información</h3>
-          <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-            { items.length === 0
-              ? <p className='m-auto w-max col-span-3'>No agregaste cuentas.</p>
-              : <ItemGroup items={items} deleteItem={deleteItem}/>
+          <div>
+            { Array.isArray(items) && items.length > 0
+              ? <ItemGroup items={items} deleteItem={deleteItem} />
+              : <p className='p-2'>No agregaste ninguna cuenta.</p>
             }
           </div>
           { items.length >= 1 ? <Button className='transition duration-150 hover:bg-red-500 hover:text-white' color='red' variant='outline' onClick={() => resetItems()}>Borrar todas las cuentas</Button> : null}
