@@ -1,5 +1,5 @@
 import { ActionIcon } from '@mantine/core';
-import { Trash } from 'tabler-icons-react';
+import { FaTrash } from 'react-icons/fa';
 import Item from '../models/item';
 
 type ItemComponentType = {
@@ -26,7 +26,7 @@ const ItemComponent = ({ item, deleteItem }: ItemComponentType) => {
         className='transition duration-150 m-2 hover:bg-red-900'
         variant="outline"
         color="red">
-        <Trash />
+        <FaTrash />
       </ActionIcon>
     </div>
   );
