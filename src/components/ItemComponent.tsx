@@ -2,7 +2,7 @@ import { ActionIcon } from '@mantine/core';
 import { FaTrash } from 'react-icons/fa';
 import Item from '../models/item';
 
-type ItemComponentType = {
+export type ItemComponentType = {
   item: Item;
   deleteItem: (id: string) => void;
 }
@@ -23,7 +23,7 @@ const ItemComponent = ({ item, deleteItem }: ItemComponentType) => {
       </p>
       <ActionIcon
         onClick={() => deleteItem(item.getId())}
-        className='transition duration-150 m-2 hover:bg-red-900'
+        className='transition duration-150 m-2 hover:bg-red-500 hover:text-white'
         variant="outline"
         color="red">
         <FaTrash />

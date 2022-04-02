@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { AppShell, Button, Modal } from '@mantine/core';
+import { Toaster } from 'react-hot-toast';
 
 // Components
 import AddItems from './components/AddItems';
-import ItemComponent from './components/ItemComponent';
 import HeaderComponent from './components/HeaderComponent';
 
 // Library
-import  Item, { ItemType } from './models/item';
-import { Toaster } from 'react-hot-toast';
+import Item, { ItemType } from './models/item';
 import CreateBCSS from './components/CreateBCSS';
+import ItemGroup from './components/ItemGroup';
 
 const App = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [bcssItems, setBcssItems] = useState<Item[]>([]);
   const [openedAddItems, setOpenedAddItems] = useState<boolean>(false);
 
-  function createItem({ id, account, debts, credits}: ItemType) {
+  function createItem({ id, account, debts, credits }: ItemType) {
     const newItem = new Item({
       id: id,
       account: account,
       debts: debts,
-      credits: credits
+      credits: credits,
     });
 
     setItems([...items, newItem]);
@@ -32,6 +32,14 @@ const App = () => {
 
     setItems(newItems);
   }
+
+  function resetItems() {
+    setItems([]);
+  }
+
+  window.onbeforeunload = function() {
+    if (items.length >= 1) return 'Aún hay cuentas en uso, ¿seguro/a qué quieres salir?';
+  };
 
   return (
     <AppShell header={<HeaderComponent />}>
@@ -58,18 +66,16 @@ const App = () => {
         <section>
           <h3 className="section-title">Verificá la información</h3>
           <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-            {items.map((item) => (
-              <ItemComponent
-                key={item.getId()}
-                item={item}
-                deleteItem={deleteItem}
-              />
-            ))}
+            { items.length === 0
+              ? <p className='m-auto w-max col-span-3'>No agregaste cuentas.</p>
+              : <ItemGroup items={items} deleteItem={deleteItem}/>
+            }
           </div>
+          { items.length >= 1 ? <Button className='transition duration-150 hover:bg-red-500 hover:text-white' color='red' variant='outline' onClick={() => resetItems()}>Borrar todas las cuentas</Button> : null}
         </section>
 
         <section>
-          <h3 className='section-title'>¿Todo listo?</h3>
+          <h3 className="section-title">¿Todo listo?</h3>
           <Button
             variant="outline"
             className="m-auto w-max"
