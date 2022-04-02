@@ -1,7 +1,7 @@
 // import Account from '../models/account';
 import createAccount from '../models/account';
 
-const dummyAccount = createAccount({
+export const dummyAccount = createAccount({
   name: 'Desarrollado por Ticiano Morvan',
   value: 'DUMMY_ACCOUNT',
   group: 'ganancia',
