@@ -76,7 +76,7 @@ const BCSSComponent = ({ BCSS }: BCSSType) => {
       <td>{checkBalance(item, 'acreedor')}</td>
       <td>{checkGroup(item, 'activo')}</td>
       <td>
-        {checkGroup(item, 'pasivo') || checkGroup(item, 'patrimonio neto')}
+        {checkGroup(item, 'pasivo') && checkGroup(item, 'patrimonio neto')}
       </td>
       <td>{checkGroup(item, 'pérdida')}</td>
       <td>{checkGroup(item, 'ganancia')}</td>
