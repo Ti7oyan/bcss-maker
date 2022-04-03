@@ -21,7 +21,7 @@ function calculateTotals(items: Item[]) {
     sums: calculateSums(items),
     activo: calculateGroup(items, 'activo'),
     pasivo: calculateGroup(items, 'pasivo'),
-    patrimonioNeto: calculateGroup(items, 'patrimonioNeto'),
+    patrimonioNeto: calculateGroup(items, 'patrimonio neto'),
     perdida: calculateGroup(items, 'pérdida'),
     ganancia: calculateGroup(items, 'ganancia')
   };
