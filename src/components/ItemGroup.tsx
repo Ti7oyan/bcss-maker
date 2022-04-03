@@ -7,7 +7,7 @@ type ItemGroupType = {
 }
 
 const ItemGroup = ({ items, deleteItem }: ItemGroupType) => (
-  <ul className='m-4 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4'>
+  <ul className='flex justify-center flex-wrap'>
     { items.map((item) => (
       <ItemComponent
         key={item.id}

@@ -1,24 +1,21 @@
 import { useEffect, useState } from 'react';
 import { AppShell, Button, Modal } from '@mantine/core';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 // Components
 import AddItems from './components/AddItems';
 import HeaderComponent from './components/HeaderComponent';
+import ItemGroup from './components/ItemGroup';
+import BCSSComponent from './components/BCSSComponent';
 
 // Library
 import Item, { ItemType } from './models/item';
-import CreateBCSS from './components/CreateBCSS';
-import ItemGroup from './components/ItemGroup';
+import BCSS from './models/bcss';
 
 const App = () => {
   const [items, setItems] = useState<Item[]>([]);
-  const [bcssItems, setBcssItems] = useState<Item[]>([]);
+  const [bcss, setBcss] = useState<BCSS>();
   const [openedAddItems, setOpenedAddItems] = useState<boolean>(false);
-
-  useEffect(() => {
-    console.log(localStorage.getItem('items'));
-  }, []);
 
   useEffect(() => {
     const savedItems = JSON.parse(localStorage.getItem('items')!);
@@ -26,6 +23,10 @@ const App = () => {
       setItems(savedItems);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
 
   function createItem({ id, account, debts, credits, total }: ItemType) {
     const newItem = new Item({
@@ -46,7 +47,43 @@ const App = () => {
   }
 
   function resetItems() {
-    setItems([]);
+    toast((t) => (
+      <div className='flex'>
+        <p className='text-sm'>¿Seguro/a que quieres borrar todas las cuentas?</p>
+        <span className='flex'>
+          <Button
+            variant="light"
+            className="border-green-500 mx-2"
+            color="green"
+            onClick={() => {
+              setItems([]);
+              toast.dismiss(t.id);
+            }}
+          >
+            Si
+          </Button>
+          <Button
+            variant="light"
+            className="border-red-500"
+            color="red"
+            onClick={() => {
+              toast.dismiss(t.id);
+            }}
+          >
+            No
+          </Button>
+        </span>
+      </div>
+    ));
+  }
+
+  function createBCSS() {
+    if (items.length >= 1) {
+      const newBCSS = new BCSS(items);
+      setBcss(newBCSS);
+    } else {
+      toast.error('No agregaste cuentas que utilizar.');
+    }
   }
 
   return (
@@ -74,12 +111,24 @@ const App = () => {
         <section>
           <h3 className="section-title">Verificá la información</h3>
           <div>
-            { Array.isArray(items) && items.length > 0
-              ? <ItemGroup items={items} deleteItem={deleteItem} />
-              : <p className='p-2'>No agregaste ninguna cuenta.</p>
-            }
+            {Array.isArray(items) && items.length > 0 ? (
+              <ItemGroup items={items} deleteItem={deleteItem} />
+            ) : (
+              <p className="p-2">No agregaste ninguna cuenta.</p>
+            )}
           </div>
-          { items.length >= 1 ? <Button className='transition duration-150 hover:bg-red-500 hover:text-white' color='red' variant='outline' onClick={() => resetItems()}>Borrar todas las cuentas</Button> : null}
+          {items.length >= 1 
+            ? (
+              <Button
+                className="m-4 transition duration-150 hover:bg-red-500 hover:text-white"
+                color="red"
+                variant="outline"
+                onClick={() => resetItems()}
+              >
+                Borrar todas las cuentas
+              </Button>
+            )
+            : null}
         </section>
 
         <section>
@@ -88,14 +137,14 @@ const App = () => {
             variant="outline"
             className="m-auto w-max"
             onClick={() => {
-              setBcssItems(items);
+              createBCSS();
             }}
           >
             Crear BCSS
           </Button>
         </section>
 
-        <CreateBCSS items={bcssItems} />
+        {bcss ? <BCSSComponent BCSS={bcss} /> : null}
       </main>
     </AppShell>
   );
