@@ -1,4 +1,3 @@
-// import Account from '../models/account';
 import createAccount from '../models/account';
 
 export const dummyAccount = createAccount({
@@ -18,6 +17,14 @@ export const dummyAccount = createAccount({
 const caja = createAccount({
   name: 'Caja',
   value: 'CAJA',
+  heading: 'Caja y Banco',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const fondoFijo = createAccount({
+  name: 'Fondo fijo',
+  value: 'FONDO_FIJO',
   heading: 'Caja y Banco',
   group: 'activo',
   balance: 'deudor'
@@ -43,6 +50,40 @@ const bancoCajaDeAhorro = createAccount({
   name: 'Banco caja de ahorro',
   value: 'BANCO_CAJA_AHORRO',
   heading: 'Caja y Banco',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+// Inversiones
+
+const bancoPlazoFijo = createAccount({
+  name: 'Banco plazo fijo',
+  value: 'BANCO_PLAZO_FIJO',
+  heading: 'Inversiones',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const acciones = createAccount({
+  name: 'Acciones',
+  value: 'ACCIONES',
+  heading: 'Inversiones',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const monedaExtranjera = createAccount({
+  name: 'Moneda extranjera',
+  value: 'MONEDA_EXTRANJERA',
+  heading: 'Inversiones',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const titulosPublicos = createAccount({
+  name: 'Títulos públicos',
+  value: 'TITULOS_PUBLICOS',
+  heading: 'Inversiones',
   group: 'activo',
   balance: 'deudor'
 });
@@ -73,6 +114,22 @@ const tarjetaDeCreditoACobrar = createAccount({
   balance: 'deudor'
 });
 
+const deudoresMorosos = createAccount({
+  name: 'Deudores morosos',
+  value: 'DEUDORES_MOROSOS',
+  heading: 'Créditos por Ventas',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const deudoresEnGestionJudicial = createAccount({
+  name: 'Deudores en gestión judicial',
+  value: 'DEUDORES_GESTION_JUDICIAL',
+  heading: 'Créditos por Ventas',
+  group: 'activo',
+  balance: 'deudor',
+});
+
 // Otros créditos
 
 const deudoresVarios = createAccount({
@@ -83,6 +140,22 @@ const deudoresVarios = createAccount({
   balance: 'deudor'
 });
 
+const deudoresHipotecarios = createAccount({
+  name: 'Deudores hipotecarios',
+  value: 'DEUDORES_HIPOTECARIOS',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const deudoresPrendarios = createAccount({
+  name: 'Deudores prendarios',
+  value: 'DEUDORES_PRENDARIOS',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
 const socioCuentaAporte = createAccount({
   name: 'Socio cuenta aporte',
   value: 'SOCIO_CUENTA_APORTE',
@@ -91,12 +164,52 @@ const socioCuentaAporte = createAccount({
   balance: 'deudor'
 });
 
-const motivoACobrar = createAccount({
-  name: 'Motivo a cobrar',
-  value: 'MOTIVO_COBRAR',
+const accionistas = createAccount({
+  name: 'Accionistas',
+  value: 'ACCIONISTAS',
   heading: 'Otros Créditos',
   group: 'activo',
-  balance: 'deudor'
+  balance: 'deudor',
+});
+
+const saldoIvaDeudor = createAccount({
+  name: 'Saldo IVA (D)',
+  value: 'SALDO_IVA_DEUDOR',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const comisionesACobrar = createAccount({
+  name: 'Comisiones a cobrar',
+  value: 'COMISIONES_COBRAR',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const alquileresACobrar = createAccount({
+  name: 'Alquileres a cobrar',
+  value: 'ALQUILERES_COBRAR',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const segurosACobrar = createAccount({
+  name: 'Seguros a cobrar',
+  value: 'SEGUROS_COBRAR',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
+});
+
+const interesesACobrar = createAccount({
+  name: 'Intereses a cobrar',
+  value: 'INTERESES_COBRAR',
+  heading: 'Otros Créditos',
+  group: 'activo',
+  balance: 'deudor',
 });
 
 // Bienes de cambio
@@ -177,11 +290,59 @@ const terrenos = createAccount({
   balance: 'deudor'
 });
 
+const rodadoPrendado = createAccount({
+  name: 'Rodado prendado',
+  value: 'RODADO_PRENDADO',
+  heading: 'Bienes de Uso',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const maquinariaPrendada = createAccount({
+  name: 'Maquinaria prendada',
+  value: 'MAQUINARIA_PRENDADA',
+  heading: 'Bienes de Uso',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const terrenoHipotecado = createAccount({
+  name: 'Terreno hipotecado',
+  value: 'TERRENO_HIPOTECADO',
+  heading: 'Bienes de Uso',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const inmuebleHipotecado = createAccount({
+  name: 'Inmueble hipotecado',
+  value: 'INMUEBLE_HIPOTECADO',
+  heading: 'Bienes de Uso',
+  group: 'activo',
+  balance: 'deudor'
+});
+
 // Bienes Intangibles
 
 const llaveDeNegocio = createAccount({
   name: 'Llave de negocio',
   value: 'LLAVE_NEGOCIO',
+  heading: 'Bienes Intangibles',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const patenteDeInvencion = createAccount({
+  name: 'Patente de invención',
+  value: 'PATENTE_INVENCION',
+  heading: 'Bienes Intangibles',
+  group: 'activo',
+  balance: 'deudor'
+});
+
+const franquicias = createAccount({
+  name: 'Franquicias',
+  value: 'FRANQUICIAS',
   heading: 'Bienes Intangibles',
   group: 'activo',
   balance: 'deudor'
@@ -227,7 +388,41 @@ const documentosAPagar = createAccount({
   balance: 'acreedor'
 });
 
+const tarjetaDeCreditoAPagar = createAccount({
+  name: 'Tarjeta de crédito a pagar',
+  value: 'TARJETA_CREDITO_PAGAR',
+  heading: 'Deudas Comerciales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+// Deudas bancarias
+
+const adelantoEnCuentaCorriente = createAccount({
+  name: 'Adelanto en Cuenta Corriente',
+  value: 'ADELANTO_CUENTA_CORRIENTE',
+  heading: 'Deudas Bancarias',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const obligacionesAPagarBancarias = createAccount({
+  name: 'Obligaciones a pagar bancarias',
+  value: 'OBLIGACIONES_PAGAR_BANCARIAS',
+  heading: 'Deudas Bancarias',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
 // Deudas fiscales
+
+const saldoIvaAcreedor = createAccount({
+  name: 'Saldo IVA (A)',
+  value: 'SALDO_IVA_ACREEDOR',
+  heading: 'Deudas Fiscales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
 
 const impuestosAPagar = createAccount({
   name: 'Impuestos a pagar',
@@ -247,14 +442,102 @@ const sueldosAPagar = createAccount({
   balance: 'acreedor'
 });
 
+const regimenNacionalDeSeguridadSocial = createAccount({
+  name: 'Régimen Nacional de Seguridad Social',
+  value: 'REGIMEN_NACIONAL_SEGURIDAD_SOCIAL',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const regimenNacionalDeObraSocial = createAccount({
+  name: 'Régimen Nacional de Obra Social',
+  value: 'REGIMEN_NACIONAL_OBRA_SOCIAL',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const cuotaSindical = createAccount({
+  name: 'Cuota sindical',
+  value: 'CUOTA_SINDICAL',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const artAPagar = createAccount({
+  name: 'A.R.T. a pagar',
+  value: 'ART_PAGAR',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const socioCuentaParticular = createAccount({
+  name: 'Socio cuenta particular',
+  value: 'SOCIO_CUENTA_PARTICULAR',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const honorariosAPagar = createAccount({
+  name: 'Honorarios a pagar',
+  value: 'HONORARIOS_PAGAR',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+const dividendosAPagar = createAccount({
+  name: 'Dividendos a pagar',
+  value: 'DIVIDENDOS_PAGAR',
+  heading: 'Deudas Previsionales/sociales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
 // Otras deudas
 
-const motivoAPagar = createAccount({
-  name: 'Motivo a pagar',
-  value: 'MOTIVO_PAGAR',
+const serviciosAPagar = createAccount({
+  name: 'Servicios a pagar',
+  value: 'SERVICIOS_PAGAR',
   heading: 'Otras Deudas',
   group: 'pasivo',
   balance: 'acreedor'
+});
+
+const comisionesAPagar = createAccount({
+  name: 'Comisiones a pagar',
+  value: 'COMISIONES_PAGAR',
+  heading: 'Otras Deudas',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const alquileresAPagar = createAccount({
+  name: 'Alquileres a pagar',
+  value: 'ALQUILERES_PAGAR',
+  heading: 'Otras Deudas',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const segurosAPagar = createAccount({
+  name: 'Seguros a pagar',
+  value: 'SEGUROS_PAGAR',
+  heading: 'Otras Deudas',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const interesesAPagar = createAccount({
+  name: 'Intereses a pagar',
+  value: 'INTERESES_PAGAR',
+  heading: 'Otras Deudas',
+  group: 'pasivo',
+  balance: 'acreedor',
 });
 
 // Pasivo No Corriente
@@ -275,6 +558,50 @@ const hipotecasAPagar = createAccount({
   heading: 'Deudas Financieras',
   group: 'pasivo',
   balance: 'acreedor'
+});
+
+// Deudas previsionales
+
+const previsionParaDespido = createAccount({
+  name: 'Previsión para despido',
+  value: 'PREVISION_DESPIDO',
+  heading: 'Deudas Previsionales',
+  group: 'pasivo',
+  balance: 'acreedor'
+});
+
+// Pasivos diferidos
+
+const comisionesCobradasPorAdelantado = createAccount({
+  name: 'Comisiones cobradas por adelantado',
+  value: 'COMISIONES_COBRADAS_ADELANTADO',
+  heading: 'Pasivos Diferidos',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const alquileresCobradosPorAdelantado = createAccount({
+  name: 'Alquileres cobrados por adelantado',
+  value: 'ALQUILERES_COBRADOS_ADELANTADO',
+  heading: 'Pasivos Diferidos',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const segurosCobradosPorAdelantado = createAccount({
+  name: 'Seguros cobrados por adelantado',
+  value: 'SEGUROS_COBRADOS_ADELANTADO',
+  heading: 'Pasivos Diferidos',
+  group: 'pasivo',
+  balance: 'acreedor',
+});
+
+const interesesCobradosPorAdelantado = createAccount({
+  name: 'Intereses cobrados por adelantado',
+  value: 'INTERESES_COBRADOS_ADELANTADO',
+  heading: 'Pasivos Diferidos',
+  group: 'pasivo',
+  balance: 'acreedor',
 });
 
 // Patrimonio Neto
@@ -524,15 +851,29 @@ const comisionesCobradas = createAccount({
 export const cuentasContables = [
   // Activo
   caja,
+  fondoFijo,
   bancoCuentaCorriente,
   valoresADepositar,
   bancoCajaDeAhorro,
+  bancoPlazoFijo,
+  acciones,
+  monedaExtranjera,
+  titulosPublicos,
   deudoresPorVenta,
   documentosACobrar,
   tarjetaDeCreditoACobrar,
+  deudoresMorosos,
+  deudoresEnGestionJudicial,
   deudoresVarios,
+  deudoresHipotecarios,
+  deudoresPrendarios,
   socioCuentaAporte,
-  motivoACobrar,
+  accionistas,
+  saldoIvaDeudor,
+  comisionesACobrar,
+  alquileresACobrar,
+  segurosACobrar,
+  interesesACobrar,
   mercaderias,
   mueblesYUtiles,
   equipamientoDeComputacion,
@@ -542,18 +883,44 @@ export const cuentasContables = [
   rodados,
   terrenos,
   inmuebles,
+  rodadoPrendado,
+  maquinariaPrendada,
+  inmuebleHipotecado,
+  terrenoHipotecado,
   llaveDeNegocio,
+  patenteDeInvencion,
+  franquicias,
   gastosDeOrganizacion,
 
   // Pasivo
   proveedores,
   acreedoresVarios,
   documentosAPagar,
+  tarjetaDeCreditoAPagar,
+  adelantoEnCuentaCorriente,
+  obligacionesAPagarBancarias,
+  saldoIvaAcreedor,
   impuestosAPagar,
   sueldosAPagar,
-  motivoAPagar,
+  regimenNacionalDeSeguridadSocial,
+  regimenNacionalDeObraSocial,
+  cuotaSindical,
+  artAPagar,
+  socioCuentaParticular,
+  honorariosAPagar,
+  dividendosAPagar,
+  comisionesAPagar,
+  segurosAPagar,
+  serviciosAPagar,
+  interesesAPagar,
+  alquileresAPagar,
   prendasAPagar,
   hipotecasAPagar,
+  previsionParaDespido,
+  comisionesCobradasPorAdelantado,
+  alquileresCobradosPorAdelantado,
+  segurosCobradosPorAdelantado,
+  interesesCobradosPorAdelantado,
 
   // Patrimonio Neto
   capitalSocial,
